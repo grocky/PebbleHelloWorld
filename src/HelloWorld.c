@@ -1,7 +1,9 @@
 #include <pebble.h>
 
-#define KEY_TEMERATURE 0
-#define KEY_CONDITIONS 1
+enum {
+    KEY_TEMPERATURE = 0,
+    KEY_CONDITIONS = 1
+};
 
 static Window *s_main_window;
 
@@ -35,6 +37,7 @@ static void update_time() {
 }
 
 static void main_window_load(Window *window) {
+    APP_LOG(APP_LOG_LEVEL_INFO, "main_window_load()");
     // Ceate GBitmap, then set to created BitmapLayer
     s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_BACKGROUND);
     s_background_layer = bitmap_layer_create(GRect(0, 0, 144, 168));
@@ -96,6 +99,7 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 }
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
+    APP_LOG(APP_LOG_LEVEL_INFO, "inbox_received_callback()");
     // Store incoming information
     static char temperature_buffer[8];
     static char conditions_buffer[32];
@@ -106,7 +110,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
 
     while(t != NULL) {
         switch(t->key) {
-            case KEY_TEMERATURE:
+            case KEY_TEMPERATURE:
                 snprintf(temperature_buffer, sizeof(temperature_buffer), "%dC", (int)t->value->int32);
                 break;
             case KEY_CONDITIONS:
@@ -137,6 +141,8 @@ static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
 }
 
 static void init() {
+    APP_LOG(APP_LOG_LEVEL_INFO, "HelloWorld init()");
+
     s_main_window = window_create();
 
     // set handlers to manage the elements inside the Window
@@ -157,14 +163,17 @@ static void init() {
     app_message_register_outbox_failed(outbox_failed_callback);
     app_message_register_outbox_sent(outbox_sent_callback);
 
+    APP_LOG(APP_LOG_LEVEL_INFO, "opening appMessage");
     app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
 }
 
 static void deinit() {
+    APP_LOG(APP_LOG_LEVEL_INFO, "deinit()");
     window_destroy(s_main_window);
 }
 
 int main(void) {
+    APP_LOG(APP_LOG_LEVEL_INFO, "main()");
     init();
 
     // letts the watchapp wait for system events until it exits

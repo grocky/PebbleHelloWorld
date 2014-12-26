@@ -12,10 +12,12 @@ function locationSuccess(pos) {
     var url = "http://api.openweathermap.org/data/2.5/weather?lat=" +
         pos.coords.latitude + "&lon=" + pos.coords.longitude;
 
+    console.log("locationSuccess() url: " + url);
+
     xhrRequest(url, 'GET',
         function(responseText) {
             var json = JSON.parse(responseText);
-            consloe.log(json);
+            console.log(json);
 
             var temperature = Math.round(json.main.temp - 273.15);
             console.log("Temperature is " + temperature);
@@ -40,11 +42,12 @@ function locationSuccess(pos) {
     );
 }
 
-funciton locationError(err) {
+function locationError(err) {
     console.log("Error requesting location: ");
 }
 
 function getWeather() {
+    console.log("getWeather()");
     navigator.geolocation.getCurrentPosition(
         locationSuccess,
         locationError,
