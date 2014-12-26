@@ -1,0 +1,19 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "Rocky Gray Jr.",
+    "longName": "Hello World",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "shortName": "Hello World",
+    "uuid": "6a3eaa65-5ca5-434d-ab74-8bf3819f1ff6",
+    "versionCode": 1,
+    "versionLabel": "0.1",
+    "watchapp": {
+        "watchface": true
+    }
+}
