@@ -15,12 +15,7 @@
             },
             {
                 "file": "fonts/perfect-dos-vga.ttf",
-                "name": "PERFECT_DOS_VGA_42",
-                "type": "font"
-            },
-            {
-                "file": "fonts/perfect-dos-vga.ttf",
-                "name": "PERFECT_DOS_VGA_20",
+                "name": "PERFECT_DOX_VGA_42",
                 "type": "font"
             }
         ]
