@@ -12,21 +12,20 @@ function locationSuccess(pos) {
     var url = "http://api.openweathermap.org/data/2.5/weather?lat=" +
         pos.coords.latitude + "&lon=" + pos.coords.longitude;
 
-    console.log("locationSuccess() url: " + url);
-
     xhrRequest(url, 'GET',
         function(responseText) {
             var json = JSON.parse(responseText);
-            console.log(json);
+            // console.log(JSON.stringify(json, null, "  "));
 
-            var temperature = Math.round(json.main.temp - 273.15);
-            console.log("Temperature is " + temperature);
+            var tempCelcius = json.main.temp - 273.15;
+            var tempFahrenheit = Math.round(tempCelcius * 9 / 5 + 32);
+            console.log("Temperature is " + tempFahrenheit);
 
             var conditions = json.weather[0].main;
             console.log("Conditions are " + conditions);
 
             var dictionary = {
-                "KEY_TEMPERATURE": temperature,
+                "KEY_TEMPERATURE": tempFahrenheit,
                 "KEY_CONDITIONS": conditions
             };
 
@@ -47,7 +46,7 @@ function locationError(err) {
 }
 
 function getWeather() {
-    console.log("getWeather()");
+    // console.log("getWeather()");
     navigator.geolocation.getCurrentPosition(
         locationSuccess,
         locationError,
@@ -61,7 +60,6 @@ function getWeather() {
 Pebble.addEventListener('ready',
     function(e) {
         console.log("PebbleKit JS ready!");
-
         getWeather();
     }
 );
