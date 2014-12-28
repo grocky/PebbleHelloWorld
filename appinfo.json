@@ -7,7 +7,7 @@
         "location"
     ],
     "companyName": "Rocky Gray Jr.",
-    "longName": "Hello World",
+    "longName": "grocky watchface",
     "projectType": "native",
     "resources": {
         "media": [
@@ -17,18 +17,18 @@
                 "type": "png"
             },
             {
-                "file": "fonts/perfect-dos-vga.ttf",
-                "name": "PERFECT_DOS_VGA_42",
+                "file": "fonts/Monofett-regular.ttf",
+                "name": "TIME_FONT_70",
                 "type": "font"
             },
             {
-                "file": "fonts/perfect-dos-vga.ttf",
-                "name": "PERFECT_DOS_VGA_20",
+                "file": "fonts/Inconsolata-regular.ttf",
+                "name": "INFO_FONT_15",
                 "type": "font"
             }
         ]
     },
-    "shortName": "HelloWorld",
+    "shortName": "grockyFace",
     "uuid": "6a3eaa65-5ca5-434d-ab74-8bf3819f1ff6",
     "versionCode": 1,
     "versionLabel": "0.1",
